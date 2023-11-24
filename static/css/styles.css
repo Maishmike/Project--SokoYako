@@ -1,6 +1,5 @@
 body {
   min-height: 100vh;
-  background-image: url('../images/bg3.jpg');
   background-size: cover;
   background-position: center;
   font-family: "Trebuchet MS",sans-serif;
@@ -59,11 +58,6 @@ h1{
     margin-top: 5px;
     margin-bottom: 5px;
 }
-
-
-
-
-
 
 
 ul {
@@ -167,7 +161,7 @@ ul {
   background: #ff5e14;
 }
 .footer-widget ul li {
-  display: inline-block;
+  display: inline-flex;
   float: left;
   width: 50%;
   margin-bottom: 12px;
@@ -205,12 +199,13 @@ ul {
 }
 .copyright-area{
   background: #202020;
-  padding: 25px 0;
+  padding: 5px 0;
 }
 .copyright-text p {
   margin: 0;
   font-size: 14px;
   color: #878787;
+  line-height: 1.0;
 }
 .copyright-text p a{
   color: #ff5e14;
@@ -225,4 +220,8 @@ ul {
 .footer-menu li a {
   font-size: 14px;
   color: #878787;
+}
+
+.itemcl{
+  margin-bottom: 200px;
 }

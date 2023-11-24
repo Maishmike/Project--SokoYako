@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Items{% endblock %}
+
+{% block styles %}
+    <style>
+        body{
+            background-image: url("{% static 'images/bg11.jpg' %}");
+        }
+    </style>
+{% endblock %}
+
+{% block data %}
+
+    <fieldset class="p-3">
+        <legend class="fs-2 text-body">About this Project</legend>
+        <div class="row container">
+            <div class="col-md-6">
+                <h2 class="text-secondary"> Project Details</h2>
+                <p>Simple marketplace, person-to-person.....</p>
+                <p>Lots of research</p>
+                <h3 class="text-info">To be added later</h3>
+                <ul>
+                    <li>Facebook login</li>
+                    <li>Cart</li>
+                    <li>Subscription</li>
+                    <li>Email Verification</li>
+                    <li>Mpesa API..with cart</li>
+                    <li>*others</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-success">Links</h1>
+                <ul>
+                    <li><a href="https://bggenerator.com/index.php" target="_blank">Backgrounds website</a></li>
+                    <li><a href="https://jsfiddle.net/bootstrapious/3j4a0Lps" target="_blank">Sign In / Log In forms</a></li>
+                    <li><a href="https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=navbar-with-logo" target="_blank"> Nav Bar</a></li>
+                    <li><a href="https://codepen.io/baahubali92/pen/KbRBxJ" target="_blank"> Footer</a></li>
+                    <li><a href="https://github.com/Maishmike/Django-login-and-signup" target="_blank">Sign In / Log In resources</a></li>
+                    <li>AI Logo</li>
+                </ul>
+            </div>
+        </div>
+    </fieldset>
+
+
+{% endblock %}
