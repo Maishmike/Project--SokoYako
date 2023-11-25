@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Contact Card {% endblock %}
+
+{% block styles %}
+    <style>
+        body{
+            background-image: url("{% static 'images/bg17.jpg' %}");
+        }
+    </style>
+{% endblock %}
+
+{% block data %}
+    <div class="container-fluid p-2 clearfix">
+        <h2 class="fw-bolder fs-3 text-dark text-capitalize">Hi {{ user.username}}, This is your Contact Card!</h2>
+        <div class="contact mt-2 p-3 ">
+            <h2 class="h2cnt">
+                Contact
+                <br>
+                Information
+            </h2>
+            <hr class="hrcnt">
+            <h3 class="h3cnt">
+                {{ contact_card.full_name}}
+                <br>
+                {{ contact_card.address }}
+            </h3>
+            <p class="pcnt">
+                <span class="prefix">Phone:</span>
+                {{ contact_card.phone_number }}
+                <br>
+                E-mail:
+                <a class="email" href="mailto:#">{{ contact_card.email }}</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

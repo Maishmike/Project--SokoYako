@@ -13,8 +13,8 @@
 
 {% block data %}
 
-    <div class="container pb-3 g-2 row pt-3 mt-2 itemcl">
-        <div class="col-4">
+    <div class="container-fluid py-3 row mt-2 itemcl">
+        <div class="col-4 py-3 ">
             <form action="{% url 'item:items' %}" method="get">
                 <input name="query" type="text" class="w-100 px-3 py-2 border rounded-pill" value="{{ query }}" placeholder="Search for an item....">
                 <button class="mt-1 bg-success py-1 px-2 fs-5 text-white rounded-pill me-5">Search</button>
@@ -31,8 +31,8 @@
             </ul>
         </div>
 
-        <div class="col-8">
-             <div class="row ">
+        <div class="col-8 py-3 ">
+             <div class="row container-fluid">
                  {% for item in items %}
                      <div class="col-md-4">
                          <a href="{% url 'item:detail' item.id %}" class="text-decoration-none">

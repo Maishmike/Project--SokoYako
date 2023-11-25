@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/css?family=Six+Caps|Open+Sans:400,300,600);
+
 body {
   min-height: 100vh;
   background-size: cover;
@@ -224,4 +226,65 @@ ul {
 
 .itemcl{
   margin-bottom: 200px;
+}
+
+.bigimg {
+  object-fit: contain;
+  max-width: 100%; /* Maintain the aspect ratio */
+  margin: auto; /* Center the image within the carousel item */
+  height: 100px;
+}
+.carousel-indicators{
+  color: #151414;
+}
+
+
+
+.h2cnt {
+  font: 300 33px/40px 'Open Sans', sans-serif;
+  color: #cfd8ee;
+  margin: 0 0 23px;
+}
+.h3cnt {
+  font: 13px/20px 'Open Sans', sans-serif;
+  color: #e7efff;
+  margin: 0 0 6px;
+}
+.pcnt {
+  margin-bottom: 24px;
+  font: 13px/20px 'Open Sans', sans-serif;
+}
+
+.hrcnt {
+    background-color: #51596d;
+    border: none;
+    height: 1px;
+    margin: 0 0 21px;
+}
+
+.contact {
+  padding: 63px 85px 50px 80px;
+  color: #8391ab;
+  width: 370px;
+  background-color: #14163D;
+  margin: 60px auto;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* box-shadow */
+}
+.prefix {
+  width: 48px;
+  display: inline-block;
+
+}
+.email {
+  color: #ffffff;
+  margin-left: 5px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.email:hover {
+  color: #cfd8ee;
+  text-decoration: none;
 }

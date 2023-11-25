@@ -30,7 +30,7 @@ class NewItemForm(forms.ModelForm):
                 'placeholder': 'Item Image'
             }),
             'is_featured': forms.CheckboxInput(attrs={
-                'class': 'rounded-3',
+                'class': 'rounded-3 m-0',
                 'id': 'is_featured',
                 'name': 'is_featured'
             })

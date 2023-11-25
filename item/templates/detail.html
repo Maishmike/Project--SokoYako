@@ -31,7 +31,7 @@
                     <a href="{% url 'item:delete' item.id %}" class="d-inline-block mt-4 px-4 py-2 fs-5 fw-bold text-white bg-danger rounded text-decoration-none"> Delete</a>
                 </div>
             {% else %}
-                <a href="" class="d-inline-block mt-4 px-4 py-2 fs-5 fw-bold text-white bg-success rounded text-decoration-none"> Contact Seller</a>
+                <a href="{% url 'base:view_seller_contact_card' seller_id=seller.id %}" class="d-inline-block mt-4 px-4 py-2 fs-5 fw-bold text-white bg-success rounded text-decoration-none"> Contact Seller</a>
             {% endif %}
         </div>
     </div>

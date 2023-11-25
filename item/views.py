@@ -1,15 +1,24 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
+
+from base.models import ContactCard
 from .models import Item, Category
 from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
 from django.db.models import Q
+
 # Create your views here.
 
 
 def detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
     related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)
-    return render(request, 'detail.html', {'item': item, 'related_items': related_items})
+    seller = item.created_by
+    return render(request, 'detail.html', {
+        'item': item,
+        'related_items': related_items,
+        'seller': seller
+    })
 
 
 @login_required
@@ -30,7 +39,7 @@ def new(request):
 def delete(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
     item.delete()
-    return redirect('dashboard:index')
+    return redirect('dashboard:dashboard')
 
 
 @login_required
@@ -65,7 +74,14 @@ def items(request):
     })
 
 
+def items_by_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    items = Item.objects.filter(category=category)
 
+    return render(request, 'items_by_category.html', {
+        'category': category,
+        'items': items
+    })
 
 
 

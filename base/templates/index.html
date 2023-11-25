@@ -5,7 +5,7 @@
 {% block styles %}
     <style>
         body{
-            background-image: url("{% static 'images/bg9.jpg' %}");
+            background-image: url("{% static 'images/bg13.jpg' %}");
         }
     </style>
 {% endblock %}
@@ -15,17 +15,20 @@
     <div class="p-2">
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-3 fs-3 text-center"> Featured Items</h2>
+                <h2 class="mb-2 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Featured Items</h2>
                 <div class="row ">
                     {% for item in featured %}
-                        <div class="col-md-4">
+                        <div class="col-md-4 my-2">
                             <a href="{% url 'item:detail' item.id %}" class="text-decoration-none">
-                                <div>
-                                    <img src="{{ item.image.url }}" alt="" class="rounded-top img-fluid w-100">
-                                </div>
-                                <div class="p-3 bg-white rounded-bottom">
-                                    <h2 class="fs-3">{{ item.name }}</h2>
-                                    <p class="text-dark">Price: {{ item.price }}</p>
+                                <div class="card" style="width: 18rem;">
+                                    <img src="{{ item.image.url }}" class="card-img-top img-fluid bigimg" alt="">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.name}}</h5>
+                                        <p class="card-text">{{ item.description}}</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Kshs. {{ item.price}}</li>
+                                    </ul>
                                 </div>
                             </a>
                         </div>
@@ -36,9 +39,9 @@
 
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-3 fs-3 text-center"> New Items</h2>
+                <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> New Items</h2>
                 <div class="row ">
-                    {% for item in items %}
+                    {% for item in new_items %}
                         <div class="col-md-4">
                             <a href="{% url 'item:detail' item.id %}" class="text-decoration-none">
                                 <div>
@@ -57,13 +60,13 @@
 
         <div class="container-fluid clearfix p-2">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-3 fs-3 text-center"> Categories</h2>
+                <h2 class="mb-5 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Categories</h2>
                 <div class="row">
                     {% for category in categories %}
                         <div class="col-md-4">
-                            <a href="" class="text-decoration-none">
+                            <a href="{% url 'item:items_by_category' category.id %}" class="text-decoration-none">
                                 <div>
-                                    <img src="{{ item.image.url }}" alt="" class="rounded-top w-100">
+                                    <img src="{{ category.cat_image.url }}" alt="" class="rounded-top w-100">
                                 </div>
                                 <div class="p-3 bg-white rounded-bottom">
                                     <h2 class="fs-3">{{ category.name }}</h2>

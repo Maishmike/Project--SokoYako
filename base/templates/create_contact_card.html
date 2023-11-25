@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Create Contact Card {% endblock %}
+
+{% block styles %}
+    <style>
+        body{
+            background-image: url("{% static 'images/bg17.jpg' %}");
+        }
+    </style>
+{% endblock %}
+
+{% block data %}
+    <h1 class="m-3 fs-2 p-2"> Create your Contact Card</h1>
+    <div class="container justify-content-center align-items-center shadow-lg my-3 border border-light-subtle rounded-3 p-3">
+        <form method="post" action="{% url 'base:create_contact_card' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group col-lg-12 mx-auto mb-3">
+                <button type="submit" class="btn btn-primary btn-block py-2">
+                    <span class="font-weight-bold">Create Card</span>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
