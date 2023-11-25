@@ -5,7 +5,7 @@
 {% block styles %}
     <style>
         body{
-            background-image: url("{% static 'images/bg7.jpg' %}");
+            background-image: url("{% static 'images/bg4.jpg' %}");
         }
     </style>
 {% endblock %}
@@ -14,8 +14,9 @@
 
     <div class="p-2">
         <div class="container-fluid p-2 clearfix">
+            <h2 class="fw-bolder fs-3 text-primary">Hi {{ user.username}}, Welcome to your stall!</h2>
             <div class="mt-4 mb-1 mx-2 px-3 py-5 bg-body-secondary rounded">
-                <h2 class="mb-3 fs-3 text-center"> My Items</h2>
+                <h2 class="mb-5 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Things you are currently selling:</h2>
                 <div class="row ">
                     {% for item in items %}
                         <div class="col-md-4">

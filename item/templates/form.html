@@ -12,13 +12,14 @@
 
 {% block data %}
 
-    <h1 class="mb-3 fs-2 "> Add an Item</h1>
+    <h1 class="m-3 fs-2 p-2"> {{ title}}</h1>
     <div class="container justify-content-center align-items-center shadow-lg my-4 border">
         <form action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="my-3">
                 <div class="p-3">
                     {{ form.as_p }}
+                    <p class="form-check text-warning p-0 m-0" id="cut-off-message">Ticking this means a 10% cut off from the sale of the item.</p>
                 </div>
             </div>
 

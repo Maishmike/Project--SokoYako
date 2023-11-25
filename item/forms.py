@@ -18,7 +18,8 @@ class NewItemForm(forms.ModelForm):
             }),
             'description': forms.Textarea(attrs={
                 'class': 'border form-control rounded-3',
-                'placeholder': 'Item Description'
+                'placeholder': 'Item Description',
+                'rows': '3'
             }),
             'price': forms.NumberInput(attrs={
                 'class': 'border form-control rounded-3',
@@ -29,7 +30,9 @@ class NewItemForm(forms.ModelForm):
                 'placeholder': 'Item Image'
             }),
             'is_featured': forms.CheckboxInput(attrs={
-                'class': 'border form-control rounded-3'
+                'class': 'rounded-3',
+                'id': 'is_featured',
+                'name': 'is_featured'
             })
 
         }
@@ -58,7 +61,9 @@ class EditItemForm(forms.ModelForm):
                 'placeholder': 'Item Image'
             }),
             'is_featured': forms.CheckboxInput(attrs={
-                'class': 'border form-control rounded-3'
+                'class': 'rounded-3',
+                'id': 'is_featured',
+                'name': 'is_featured'
             })
 
         }
