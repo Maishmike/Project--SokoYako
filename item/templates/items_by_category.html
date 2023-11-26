@@ -15,20 +15,17 @@
 
     <div class="container-fluid p-2 clearfix">
         <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-            <h2 class="mb-5 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> {{ category.name}}</h2>
-            <div class="row ">
+            <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3">{{ category.name }}</h2>
+            <div class="simpcard-grid p-2">
                 {% for item in items %}
-                    <div class="col-md-4 my-2">
-                        <a href="{% url 'item:detail' item.id %}" class="text-decoration-none">
-                            <div>
-                                <img src="{{ item.image.url }}" alt="" class="rounded-top img-fluid w-100">
-                            </div>
-                            <div class="p-3 bg-white rounded-bottom">
-                                <h2 class="fs-3">{{ item.name }}</h2>
-                                <p class="text-dark">Price: {{ item.price }}</p>
-                            </div>
-                        </a>
-                    </div>
+                    <a class="simpcard rounded-5" href="{% url 'item:detail' item.id %}">
+                        <div class="simpcard__background rounded-5" style="background-image: url('{{ item.image.url }}')"></div>
+                        <div class="card__content">
+                            <p class="card__category text-white">{{ item.category }}</p>
+                            <h3 class="card__heading text-capitalize text-black fw-bolder">{{ item.name }}</h3>
+                            <h3 class="fw-bolder">Kshs. {{ item.price }}</h3>
+                        </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

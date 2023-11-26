@@ -17,8 +17,8 @@ def index(request):
     categories = Category.objects.all()
     contact_card = get_object_or_404(ContactCard, user=request.user)
     current_time = timezone.now()
-    last_24_hours = current_time - timezone.timedelta(days=1)
-    new_items = Item.objects.filter(created_at__gte=last_24_hours)
+    latest = current_time - timezone.timedelta(days=1)
+    new_items = Item.objects.filter(created_at__gte=latest)
     return render(request, 'index.html', {
         'categories': categories,
         'items': items,

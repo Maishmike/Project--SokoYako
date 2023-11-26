@@ -89,6 +89,8 @@ def items(request):
 
     if query:
         items = items.filter(Q(name__icontains=query) | Q(description__icontains=query))
+
+    items = items[:4]
     return render(request, 'items.html', {
         'items': items,
         'query': query,
