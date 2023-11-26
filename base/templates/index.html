@@ -14,28 +14,21 @@
 
     <div class="p-2">
         <div class="container-fluid p-2 clearfix">
-            <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-2 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Featured Items</h2>
-                <div class="row ">
-                    {% for item in featured %}
-                        <div class="col-md-4 my-2">
-                            <a href="{% url 'item:detail' item.id %}" class="text-decoration-none">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="{{ item.image.url }}" class="card-img-top img-fluid bigimg" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ item.name}}</h5>
-                                        <p class="card-text">{{ item.description}}</p>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Kshs. {{ item.price}}</li>
-                                    </ul>
-                                </div>
-                            </a>
+        <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
+            <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Featured Items</h2>
+            <div class="card-grid p-2">
+                {% for item in featured %}
+                    <a class="card rounded-5" href="{% url 'item:detail' item.id %}">
+                        <div class="card__background rounded-5" style="background-image: url('{{ item.image.url }}')"></div>
+                        <div class="card__content">
+                            <p class="card__category">{{ item.category }}</p>
+                            <h3 class="card__heading">{{ item.name }}</h3>
                         </div>
-                    {% endfor %}
-                </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
+    </div>
 
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">

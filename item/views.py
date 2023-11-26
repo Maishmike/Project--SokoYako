@@ -44,7 +44,11 @@ def new(request):
             return redirect('item:detail', pk=item.id)
     else:
         form = NewItemForm()
-    return render(request, 'form.html', {'form': form, 'title': 'New Item'})
+    return render(request, 'form.html', {
+        'form': form,
+        'title': 'New Item',
+        'contact_card': contact_card
+    })
 
 
 @login_required
