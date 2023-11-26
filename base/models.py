@@ -8,6 +8,7 @@ class ContactCard(models.Model):
     phone_number = models.CharField(max_length=15)
     email = models.EmailField()
     address = models.CharField(max_length=60)
+    location = models.CharField(max_length=400, blank=True, null=True)
 
     def __str__(self):
         return f"Contact Card for {self.user.username}"

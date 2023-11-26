@@ -265,7 +265,7 @@ ul {
 .contact {
   padding: 63px 85px 50px 80px;
   color: #8391ab;
-  width: 370px;
+  max-width: 370px;
   background-color: #14163D;
   margin: 60px auto;
   -webkit-border-radius: 5px;
@@ -288,3 +288,15 @@ ul {
   color: #cfd8ee;
   text-decoration: none;
 }
+.phone {
+  color: #ffffff;
+  margin-left: 5px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.phone:hover {
+  color: #cfd8ee;
+  text-decoration: none;
+}
+
+

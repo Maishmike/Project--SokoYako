@@ -12,8 +12,8 @@
 
 {% block data %}
     <div class="container-fluid p-2 clearfix">
-        <h2 class="fw-bolder fs-3 text-dark text-capitalize h2cnt">Hi {{ user.username}}, Reach out to {{ contact_card.full_name}} through this Card!</h2>
-        <div class="contact mt-2 p-3">
+        <h2 class="mb-5 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3">Hi {{ user.username}}, This is your Contact Card!</h2>
+        <div class="contact mt-2 p-3 ">
             <h2 class="h2cnt">
                 Contact
                 <br>
@@ -26,12 +26,17 @@
                 {{ contact_card.address }}
             </h3>
             <p class="pcnt">
-                <span class="prefix">Phone:</span>
-                {{ contact_card.phone_number }}
+                <span class="prefix ">Phone:</span>
+                <a href="tel:#" class="phone text-decoration-underline">{{ contact_card.phone_number }}</a>
                 <br>
                 E-mail:
-                <a class="email" href="mailto:#">{{ contact_card.email }}</a>
+                <a class="email text-decoration-underline" href="mailto:#">{{ contact_card.email }}</a>
             </p>
+            {% if contact_card.location %}
+                <a href="{{ contact_card.location }}" target="_blank">
+                    <i class="fas fa-map-pin"> Location Pin</i>
+                </a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

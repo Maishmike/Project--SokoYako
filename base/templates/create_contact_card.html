@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block data %}
-    <h1 class="m-3 fs-2 p-2"> Create your Contact Card</h1>
+    <h1 class="my-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Create your Contact Card</h1>
     <div class="container justify-content-center align-items-center shadow-lg my-3 border border-light-subtle rounded-3 p-3">
         <form method="post" action="{% url 'base:create_contact_card' %}">
             {% csrf_token %}
