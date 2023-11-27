@@ -19,6 +19,7 @@ class Category(models.Model):
 class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
+    quantity = models.PositiveIntegerField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     price = models.IntegerField()
     image = models.ImageField(upload_to='item_images', blank=True, null=True)

@@ -5,7 +5,7 @@ from .models import Item, Category
 class NewItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('category', 'name', 'description', 'price', 'image', 'is_featured')
+        fields = ('category', 'name', 'description', 'quantity', 'price', 'image', 'is_featured')
 
         widgets = {
             'category': forms.Select(attrs={
@@ -25,6 +25,10 @@ class NewItemForm(forms.ModelForm):
                 'class': 'border form-control rounded-3',
                 'placeholder': 'Item Price'
             }),
+            'quantity': forms.NumberInput(attrs={
+                'class': 'border form-control rounded-3',
+                'placeholder': 'Quantity'
+            }),
             'image': forms.FileInput(attrs={
                 'class': 'border form-control rounded-3',
                 'placeholder': 'Item Image'
@@ -41,7 +45,7 @@ class NewItemForm(forms.ModelForm):
 class EditItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('name', 'description', 'price', 'image', 'is_sold', 'is_featured')
+        fields = ('name', 'description', 'price', 'quantity', 'image', 'is_sold', 'is_featured')
 
         widgets = {
             'name': forms.TextInput(attrs={
@@ -55,6 +59,10 @@ class EditItemForm(forms.ModelForm):
             'price': forms.NumberInput(attrs={
                 'class': 'border form-control rounded-3',
                 'placeholder': 'Item Price'
+            }),
+            'quantity': forms.NumberInput(attrs={
+                'class': 'border form-control rounded-3',
+                'placeholder': 'Quantity'
             }),
             'image': forms.FileInput(attrs={
                 'class': 'border form-control rounded-3',

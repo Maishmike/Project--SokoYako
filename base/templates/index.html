@@ -9,6 +9,10 @@
         body{
             background-image: url("{% static 'images/bg13.jpg' %}");
         }
+        .text-outline {
+            color: transparent; /* Make the text color transparent */
+            text-shadow: 1px 1px 2px #000, -1px -1px 2px #000; /* Apply the shadow to simulate the outline */
+        }
     </style>
 {% endblock %}
 
@@ -18,12 +22,12 @@
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
                 <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Featured Items</h2>
-                <div class="card-grid p-2">
+                <div class="card-grid p-3">
                     {% for item in featured %}
                         <a class="card rounded-5" href="{% url 'item:detail' item.id %}">
                             <div class="card__background rounded-5" style="background-image: url('{{ item.image.url }}')"></div>
                             <div class="card__content">
-                                <p class="card__category text-white">{{ item.category }}</p>
+                                <p class="card__category text-white text-outline fw-bolder">{{ item.category }}</p>
                                 <h3 class="card__heading text-capitalize text-black fw-bolder">{{ item.name }}</h3>
                                 <h3 class="fw-bolder">Kshs. {{ item.price }}</h3>
                             </div>
@@ -36,12 +40,12 @@
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
                 <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Latest Items</h2>
-                <div class="simpcard-grid p-2">
+                <div class="simpcard-grid p-3">
                     {% for item in new_items %}
                         <a class="simpcard rounded-5" href="{% url 'item:detail' item.id %}">
                             <div class="simpcard__background rounded-5" style="background-image: url('{{ item.image.url }}')"></div>
                             <div class="card__content">
-                                <p class="card__category text-white">{{ item.category }}</p>
+                                <p class="card__category text-white text-outline">{{ item.category }}</p>
                                 <h3 class="card__heading text-capitalize text-black fw-bolder">{{ item.name }}</h3>
                                 <h3 class="fw-bolder">Kshs. {{ item.price }}</h3>
                             </div>
@@ -55,19 +59,16 @@
         <div class="container-fluid clearfix p-2">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
                 <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Categories</h2>
-                <div class="row">
+                <div class="simpcard-grid p-3">
                     {% for category in categories %}
-                        <div class="col-md-4">
-                            <a href="{% url 'item:items_by_category' category.id %}" class="text-body text-decoration-none">
-                                <div>
-                                    <img src="{{ category.cat_image.url }}" alt="" class="rounded-top w-100">
-                                </div>
-                                <div class="p-3 bg-white rounded-bottom">
-                                    <h2 class="fs-3 text-primary">{{ category.name }}</h2>
-                                    <p class="">{{ category.items.count}}</p>
-                                </div>
-                            </a>
-                        </div>
+                        <a class="simpcard rounded-5" href="{% url 'item:items_by_category' category.id %}">
+                            <div class="simpcard__background rounded-5" style="background-image: url('{{ category.cat_image.url }}')"></div>
+                            <div class="card__content">
+                                <p class="card__category text-white fw-bolder fs-3 text-outline">{{ category.name }}</p>
+                                <hr class="bg-black border-4 ">
+                                <h3 class="card__heading text-capitalize text-outline text-white fw-bolder">{{ category.items.count}}</h3>
+                            </div>
+                        </a>
                     {% endfor %}
                 </div>
             </div>

@@ -8,7 +8,7 @@ class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control bg-white border-left-0 border-md',
         'id': 'login-username',
-        'placeholder': 'Enter your Username',
+        'placeholder': 'Username',
         'required': '',
         'name': 'username',
         'type': 'username'
@@ -17,7 +17,7 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control bg-white border-left-0 border-md',
         'id': 'login-password',
-        'placeholder': 'Enter your Password',
+        'placeholder': 'Password',
         'required': '',
         'name': 'password',
         'type': 'password',

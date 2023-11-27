@@ -225,20 +225,6 @@ ul {
   color: #878787;
 }
 
-.itemcl{
-  margin-bottom: 200px;
-}
-
-.bigimg {
-  object-fit: contain;
-  max-width: 100%; /* Maintain the aspect ratio */
-  margin: auto; /* Center the image within the carousel item */
-  height: 100px;
-}
-.carousel-indicators{
-  color: #151414;
-}
-
 
 
 .h2cnt {
@@ -452,7 +438,7 @@ ul {
 }
 
 .simpcard__background {
-  background-size: cover;
+  -webkit-background-size: cover;
   background-position: center;
   border-radius: var(--spacing-l);
   bottom: 0;

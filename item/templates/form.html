@@ -12,14 +12,14 @@
 
 {% block data %}
 
-    <h1 class="m-3 fs-2 p-2"> {{ title}}</h1>
-    <div class="container justify-content-center align-items-center shadow-lg my-4 border border-light-subtle rounded-3">
+    <h1 class="m-3 fs-2 p-2 fw-bolder"> {{ title}}</h1>
+    <div class="container justify-content-center align-items-center shadow-lg my-4 border border-light-subtle rounded-3 fw-bold">
         <form action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="my-3">
                 <div class="p-3">
                     {{ form.as_p }}
-                    <p class="form-check text-warning fw-bolder fs-5 p-0 m-0" id="cut-off-message">Agreeing to feature an item means that  10% will be cut off from the sale of the item.</p>
+                    <p class="form-check text-warning fw-bolder fs-5 p-0 m-0" id="cut-off-message">Featuring an item means that  10% will be cut off from the sale of the item.</p>
                 </div>
             </div>
 
