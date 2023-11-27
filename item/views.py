@@ -8,7 +8,7 @@ from base.models import ContactCard
 from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
 from django.db.models import Q
-
+from django.http import HttpResponseBadRequest
 # Create your views here.
 
 
@@ -16,7 +16,14 @@ def detail(request, pk):
     item = get_object_or_404(Item, pk=pk)
     related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)
     seller = item.created_by
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
     return render(request, 'detail.html', {
         'item': item,
         'related_items': related_items,
@@ -82,28 +89,56 @@ def items(request):
     query = request.GET.get('query', '')
     categories = Category.objects.all()
     category_id = request.GET.get('category', 0)
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+
+    try:
+        category_id = int(category_id)
+    except ValueError:
+        return HttpResponseBadRequest("Invalid category ID")
+
     items = Item.objects.filter(is_sold=False)
+    featured_items = Item.objects.filter(is_featured=True)
     if category_id:
         items = items.filter(category_id=category_id)
+        featured_items = featured_items.filter(category_id=category_id)
 
     if query:
         items = items.filter(Q(name__icontains=query) | Q(description__icontains=query))
+        featured_items = featured_items.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     items = items[:4]
+    featured_items = items[:4]
+
+    # Check if the user is logged in
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
+
     return render(request, 'items.html', {
         'items': items,
         'query': query,
         'categories': categories,
         'category_id': int(category_id),
         'search_performed': bool(query),
-        'contact_card': contact_card
+        'contact_card': contact_card,
+        'featured_items': featured_items
     })
 
 
 def items_by_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
     items = Item.objects.filter(category=category)
 
     return render(request, 'items_by_category.html', {

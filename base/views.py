@@ -15,7 +15,16 @@ def index(request):
     featured = Item.objects.order_by('-is_featured')
     featured_items = Item.objects.filter(is_featured=True)
     categories = Category.objects.all()
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
+
     current_time = timezone.now()
     latest = current_time - timezone.timedelta(days=1)
     new_items = Item.objects.filter(created_at__gte=latest)
@@ -43,7 +52,14 @@ def signup(request):
 
 
 def about(request):
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
     return render(request, 'about.html',{
         'contact_card': contact_card
     })

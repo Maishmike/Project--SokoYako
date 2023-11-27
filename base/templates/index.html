@@ -35,7 +35,7 @@
 
         <div class="container-fluid p-2 clearfix">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> New Items</h2>
+                <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Latest Items</h2>
                 <div class="simpcard-grid p-2">
                     {% for item in new_items %}
                         <a class="simpcard rounded-5" href="{% url 'item:detail' item.id %}">
@@ -54,7 +54,7 @@
 
         <div class="container-fluid clearfix p-2">
             <div class="mt-4 mb-1 mx-2 p-3 bg-body-secondary rounded">
-                <h2 class="mb-5 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Categories</h2>
+                <h2 class="mb-3 fs-3 text-center text-white fs-4 fw-bolder bg-dark p-1 rounded-3"> Categories</h2>
                 <div class="row">
                     {% for category in categories %}
                         <div class="col-md-4">
