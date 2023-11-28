@@ -106,7 +106,7 @@ def items(request):
         featured_items = featured_items.filter(Q(name__icontains=query) | Q(description__icontains=query))
 
     items = items[:4]
-    featured_items = items[:4]
+    featured_items = items[:8]
 
     # Check if the user is logged in
     if request.user.is_authenticated:

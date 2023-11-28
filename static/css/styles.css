@@ -422,6 +422,7 @@ ul {
   }
 }
 
+
 @media (min-width: 960px) {
   .simpcard-grid {
     grid-template-columns: repeat(4, 1fr);
