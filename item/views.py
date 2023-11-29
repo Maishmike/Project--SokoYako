@@ -54,7 +54,8 @@ def new(request):
     return render(request, 'form.html', {
         'form': form,
         'title': 'New Item',
-        'contact_card': contact_card
+        'contact_card': contact_card,
+        'navbar': new
     })
 
 
@@ -62,7 +63,7 @@ def new(request):
 def delete(request, pk):
     item = get_object_or_404(Item, pk=pk, created_by=request.user)
     item.delete()
-    messages.error(request, 'Item deleted successfully.')
+    messages.success(request, 'Item deleted successfully.')
     return redirect('dashboard:dashboard')
 
 
@@ -125,7 +126,8 @@ def items(request):
         'category_id': int(category_id),
         'search_performed': bool(query),
         'contact_card': contact_card,
-        'featured_items': featured_items
+        'featured_items': featured_items,
+        'navbar': items
     })
 
 

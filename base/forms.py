@@ -181,7 +181,7 @@ class EditContactCardForm(forms.ModelForm):
                 'id': 'location',
                 'type': 'text',
                 'class': 'form-control bg-white border-left-0 border-md',
-                'placeholder': 'Enter the map location for your physical store.',
+                'placeholder': 'Enter the map location e.g. for your physical store.',
                 'maxlength': '100',
                 'minlength': '4'
             })

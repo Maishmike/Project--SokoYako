@@ -14,4 +14,5 @@ urlpatterns = [
     path('create-contact-card/', views.create_contact_card, name='create_contact_card'),
     path('view-seller-contact-card/<int:seller_id>/', views.view_seller_contact_card, name='view_seller_contact_card'),
     path('edit-contact-card/', views.edit_contact_card, name='edit_contact_card'),
+
 ]

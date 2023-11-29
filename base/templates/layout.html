@@ -22,11 +22,18 @@
         .btncolor{
             background-color: #14163D
         }
+        .bgnav{
+            background-image: url("{% static 'images/bg13.jpg' %}");
+        }
+        .active {
+            color: #ff5e14
+        }
+
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg bgnav sticky-top">
     <div class="container-fluid fw-bolder">
         <a href="{% url 'base:index' %}" class="navbar-brand">
             <img src="{% static 'images/logo.jpg' %}" height="28" alt="logo">
@@ -36,11 +43,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ">
-                <a href="{% url 'base:index' %}" class="nav-item nav-link text-black">Home</a>
-                <a href="{% url 'item:new' %}" class="nav-item nav-link">Sell an Item</a>
-                <a href="{% url 'item:items' %}" class="nav-item nav-link">Browse / Explore</a>
-                <a href="{% url 'base:about' %}" class="nav-item nav-link ">About</a>
-                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Contact Us</a>
+                <a href="{% url 'base:index' %}" class="nav-item nav-link  {% if navbar == 'index' %}active{% endif %}">Home</a>
+                <a href="{% url 'base:index' %}#categories" class="nav-item nav-link" tabindex="-1">Categories</a>
+                <a href="{% url 'item:new' %}" class="nav-item nav-link {% if navbar == 'new' %}active{% endif %}">Sell an Item</a>
+                <a href="{% url 'item:items' %}" class="nav-item nav-link {% if navbar == 'items' %}active{% endif %}">Browse / Explore</a>
+                <a href="{% url 'base:about' %}" class="nav-item nav-link {% if navbar == 'about' %}active{% endif %}">About</a>
+
             </div>
             <div class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
@@ -53,7 +61,7 @@
                     <a href="{% url 'base:logout' %}" class="px-2 py-1 text-lg fw-bold bg-danger text-white rounded d-inline-block text-decoration-none my-1">Log Out</a>
                 {% else %}
                     <a href="{% url 'base:signup' %}" class="px-2 py-1 text-lg fw-bold bg-success text-white rounded d-inline-block text-decoration-none me-2 my-1">Sign Up</a>
-                    <a href="{% url 'base:login' %}" class="px-2 py-1 text-lg fw-bold bg-secondary text-white rounded d-inline-block text-decoration-none my-1">Log In</a>
+                    <a href="{% url 'base:login' %}" class="px-2 py-1 text-lg fw-bold bg-primary text-white rounded d-inline-block text-decoration-none my-1">Log In</a>
                 {% endif %}
             </div>
         </div>
@@ -159,7 +167,7 @@
             </div>
         </div>
     </div>
-    <div class="copyright-area sticky-bottom">
+    <div class="copyright-area sticky-bottom bgnav">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 text-center text-lg-left">
@@ -207,5 +215,16 @@ $(document).ready(function() {
   });
 </script>
 
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
 </body>
 </html>

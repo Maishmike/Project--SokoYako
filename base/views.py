@@ -34,7 +34,8 @@ def index(request):
         'featured': featured,
         'featured_items': featured_items,
         'new_items': new_items,
-        'contact_card': contact_card
+        'contact_card': contact_card,
+        'navbar': index
     })
 
 
@@ -60,8 +61,9 @@ def about(request):
             contact_card = None
     else:
         contact_card = None
-    return render(request, 'about.html',{
-        'contact_card': contact_card
+    return render(request, 'about.html', {
+        'contact_card': contact_card,
+        'navbar': about
     })
 
 
