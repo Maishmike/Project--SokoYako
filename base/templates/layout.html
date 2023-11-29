@@ -52,7 +52,7 @@
             </div>
             <div class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
-                    {% if contact_card %}
+                    {% if contact_card%}
                         <a href="{% url 'base:view_contact_card' %}" class="px-2 py-1 text-lg fw-bold btncolor text-white rounded d-inline-block text-decoration-none me-2 my-1">View Contact Card</a>
                     {% else %}
                         <a href="{% url 'base:create_contact_card' %}" class="px-2 py-1 text-lg fw-bold bg-success text-white rounded d-inline-block text-decoration-none me-2 my-1">Create Contact Card</a>
@@ -215,16 +215,5 @@ $(document).ready(function() {
   });
 </script>
 
-<script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
 </body>
 </html>

@@ -93,8 +93,19 @@ def create_contact_card(request):
 
 def view_seller_contact_card(request, seller_id):
     seller = get_object_or_404(User, id=seller_id)
-    contact_card = get_object_or_404(ContactCard, user=seller)
-    return render(request, 'view_seller_contact_card.html', {'contact_card': contact_card})
+    seller_contact_card = get_object_or_404(ContactCard, user=seller)
+    if request.user.is_authenticated:
+        try:
+            contact_card = ContactCard.objects.get(user=request.user)
+        except ContactCard.DoesNotExist:
+            # Handle the case where the user doesn't have a contact card
+            contact_card = None
+    else:
+        contact_card = None
+    return render(request, 'view_seller_contact_card.html', {
+        'contact_card': contact_card,
+        'seller_contact_card': seller_contact_card
+    })
 
 
 def edit_contact_card(request):

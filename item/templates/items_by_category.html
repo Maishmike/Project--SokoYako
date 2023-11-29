@@ -21,8 +21,7 @@
                     <a class="simpcard rounded-5" href="{% url 'item:detail' item.id %}">
                         <div class="simpcard__background rounded-5" style="background-image: url('{{ item.image.url }}')"></div>
                         <div class="card__content">
-                            <p class="card__category text-white">{{ item.category }}</p>
-                            <h3 class="card__heading text-capitalize text-black fw-bolder">{{ item.name }}</h3>
+                            <h3 class="card__heading text-capitalize text-white fw-bolder">{{ item.name }}</h3>
                             <h3 class="fw-bolder">Kshs. {{ item.price }}</h3>
                         </div>
                     </a>

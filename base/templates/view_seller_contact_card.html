@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %} Contact Card {% endblock %}
+{% block title %} Seller Contact Card {% endblock %}
 
 {% block styles %}
     <style>
@@ -21,18 +21,18 @@
             </h2>
             <hr class="hrcnt">
             <h3 class="h3cnt">
-                {{ contact_card.full_name}}
+                {{ seller_contact_card.full_name}}
                 <br>
-                {{ contact_card.address }}
+                {{ seller_contact_card.address }}
             </h3>
             <p class="pcnt">
                 <span class="prefix ">Phone:</span>
-                <a href="tel:#" class="phone text-decoration-underline">{{ contact_card.phone_number }}</a>
+                <a href="tel:#" class="phone text-decoration-underline">{{ seller_contact_card.phone_number }}</a>
                 <br>
                 E-mail:
-                <a class="email text-decoration-underline" href="mailto:#">{{ contact_card.email }}</a>
+                <a class="email text-decoration-underline" href="mailto:#">{{ seller_contact_card.email }}</a>
             </p>
-            {% if contact_card.location %}
+            {% if seller_contact_card.location %}
                 <a href="{{ contact_card.location }}" target="_blank">
                     <i class="fas fa-map-pin"> Location Pin</i>
                 </a>

@@ -87,7 +87,7 @@ class ContactCardForm(forms.ModelForm):
                 'id': 'full_name',
                 'type': 'text',
                 'class': 'form-control bg-white border-left-0 border-md',
-                'placeholder': 'Full Name',
+                'placeholder': 'Full Name / Company Name',
                 'maxlength': '100',
                 'minlength': '4'
             }),
@@ -144,7 +144,7 @@ class EditContactCardForm(forms.ModelForm):
                 'id': 'full_name',
                 'type': 'text',
                 'class': 'form-control bg-white border-left-0 border-md',
-                'placeholder': 'Full Name',
+                'placeholder': 'Full Name / Company Name',
                 'maxlength': '100',
                 'minlength': '4'
             }),
