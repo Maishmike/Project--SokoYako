@@ -25,9 +25,6 @@
         .bgnav{
             background-image: url("{% static 'images/bg13.jpg' %}");
         }
-        .active {
-            color: #ff5e14
-        }
 
     </style>
 </head>
@@ -38,7 +35,7 @@
         <a href="{% url 'base:index' %}" class="navbar-brand">
             <img src="{% static 'images/logo.jpg' %}" height="28" alt="logo">
         </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler border-dark text-white" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -52,6 +49,7 @@
             </div>
             <div class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
+                    <h4 class="me-5 text-capitalize fw-bolder text-dark mt-2">Welcome, {{ user.username }}</h4>
                     {% if contact_card%}
                         <a href="{% url 'base:view_contact_card' %}" class="px-2 py-1 text-lg fw-bold btncolor text-white rounded d-inline-block text-decoration-none me-2 my-1">View Contact Card</a>
                     {% else %}

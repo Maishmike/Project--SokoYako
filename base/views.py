@@ -6,7 +6,7 @@ from .forms import SignUpForm
 from django.contrib import messages
 from django.utils import timezone
 from .models import ContactCard
-from .forms import ContactCardForm, EditContactCardForm
+from .forms import ContactCardForm #EditContactCardForm
 # Create your views here.
 
 
@@ -73,24 +73,6 @@ def view_contact_card(request):
     return render(request, 'view_contact_card.html', {'contact_card': contact_card})
 
 
-def create_contact_card(request):
-    contact_card = None
-    if request.method == 'POST':
-        form = ContactCardForm(request.POST)
-        if form.is_valid():
-            contact_card = form.save(commit=False)
-            contact_card.user = request.user
-            contact_card.save()
-            messages.success(request, 'Contact Card created successfully.')
-            return redirect('base:view_contact_card')
-    else:
-        form = ContactCardForm()
-    return render(request, 'create_contact_card.html', {
-        'form': form,
-        'contact_card': contact_card,
-    })
-
-
 def view_seller_contact_card(request, seller_id):
     seller = get_object_or_404(User, id=seller_id)
     seller_contact_card = get_object_or_404(ContactCard, user=seller)
@@ -107,7 +89,25 @@ def view_seller_contact_card(request, seller_id):
         'seller_contact_card': seller_contact_card
     })
 
+def create_contact_card(request):
+    contact_card = None
+    if request.method == 'POST':
+        form = ContactCardForm(request.POST)
+        if form.is_valid():
+            contact_card = form.save(commit=False)
+            contact_card.user = request.user
+            contact_card.save()
+            messages.success(request, 'Contact Card created successfully.')
+            return redirect('base:view_contact_card')
+    else:
+        form = ContactCardForm()
+    return render(request, 'create_contact_card.html', {
+        'form': form,
+        'contact_card': contact_card,
+        'title': 'Create a contact card'
+    })
 
+'''
 def edit_contact_card(request):
     contact_card = get_object_or_404(ContactCard, user=request.user)
 
@@ -124,4 +124,4 @@ def edit_contact_card(request):
         'form': form,
         'title': 'Edit Contact Card',
         'contact_card': contact_card
-    })
+    }) '''
