@@ -131,7 +131,6 @@ class ContactCardForm(forms.ModelForm):
         }
 
 
-'''
 class EditContactCardForm(forms.ModelForm):
     class Meta:
         model = ContactCard
@@ -186,4 +185,4 @@ class EditContactCardForm(forms.ModelForm):
                 'maxlength': '100',
                 'minlength': '4'
             })
-        } '''
+        }

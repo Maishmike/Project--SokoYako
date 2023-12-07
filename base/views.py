@@ -6,7 +6,7 @@ from .forms import SignUpForm
 from django.contrib import messages
 from django.utils import timezone
 from .models import ContactCard
-from .forms import ContactCardForm #EditContactCardForm
+from .forms import ContactCardForm, EditContactCardForm
 # Create your views here.
 
 
@@ -89,6 +89,7 @@ def view_seller_contact_card(request, seller_id):
         'seller_contact_card': seller_contact_card
     })
 
+
 def create_contact_card(request):
     contact_card = None
     if request.method == 'POST':
@@ -107,9 +108,10 @@ def create_contact_card(request):
         'title': 'Create a contact card'
     })
 
-'''
+
 def edit_contact_card(request):
-    contact_card = get_object_or_404(ContactCard, user=request.user)
+    user = request.user
+    contact_card = get_object_or_404(ContactCard, user=user)
 
     if request.method == 'POST':
         form = EditContactCardForm(request.POST, instance=contact_card)
@@ -124,4 +126,4 @@ def edit_contact_card(request):
         'form': form,
         'title': 'Edit Contact Card',
         'contact_card': contact_card
-    }) '''
+    })
